@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DUCT Engineering Ltd.</title>
+<meta name="description" content="DUCT Engineering Ltd. — multidisciplinary engineering consultancy and builder in Dhaka, Bangladesh, since 2009.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#2F6B1F;--accent-soft:#E8F1E2;--ink:#14201A;--muted:#4B5A52;--soft:#F2F5F0;--line:#E1E7DE}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:#fff}
+a{color:var(--ink)}a:hover{color:var(--accent)}
+img{display:block;max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.eyebrow{margin:0;font-size:14px;font-weight:700;letter-spacing:.1em;color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;text-decoration:none;border:0;font:inherit;font-weight:700;cursor:pointer}
+.btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{color:#fff;filter:brightness(1.12)}
+.btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{color:#fff;background:var(--accent)}
+.btn-white{background:#fff;color:var(--ink)}
+h1{margin:0;font-size:clamp(38px,6vw,72px);line-height:1.04;font-weight:800;letter-spacing:-.03em}
+h2{margin:0;font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+h3{margin:0;font-weight:800}
+p{line-height:1.65}
+.muted{color:var(--muted)}
+section{padding:88px 0}
+.grid{display:grid;gap:20px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+.row{display:flex;flex-wrap:wrap;gap:32px}
+.between{justify-content:space-between;align-items:flex-end}
+.card-soft{background:var(--soft);border-radius:24px;padding:32px}
+.card-line{border:1px solid var(--line);border-radius:20px;padding:28px;background:#fff}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.scrolled{border-bottom-color:var(--line)}
+.hdr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:46px;width:auto}
+nav.main{display:flex;flex-wrap:wrap;gap:6px;background:var(--soft);padding:6px;border-radius:999px;font-size:15px;font-weight:600}
+nav.main a{text-decoration:none;padding:10px 16px;border-radius:999px}
+nav.main a.on{background:#fff;color:var(--accent)}
+.menu-btn{display:none}
+@media (max-width:900px){
+  nav.main{display:none;width:100%;flex-direction:column;border-radius:20px}
+  nav.main.open{display:flex}
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;border:1px solid var(--line);background:#fff;cursor:pointer}
+  .hdr .btn-dark{display:none}
+  section{padding:64px 0}
+}
+
+/* hero */
+.hero{background:var(--ink);border-radius:28px;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:24px;overflow:hidden}
+.hero-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.hero-strip figure{margin:0;border-radius:18px;overflow:hidden;background:#22302A;position:relative}
+.hero-strip img{width:100%;height:clamp(200px,26vw,320px);object-fit:cover}
+.hero-strip figcaption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700}
+.stats{display:flex;flex-wrap:wrap;gap:12px}
+.stat{flex:1 1 150px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 20px;color:#fff}
+.stat b{display:block;font-size:30px;font-weight:800}
+.stat span{color:#B9C7BE;font-size:14px}
+@media (max-width:700px){.hero-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* pills */
+.pills{display:flex;flex-wrap:wrap;gap:6px;background:var(--soft);padding:6px;border-radius:999px}
+.pills button{font:inherit;font-weight:600;font-size:15px;border:0;background:transparent;padding:11px 18px;border-radius:999px;cursor:pointer;min-height:44px;color:var(--ink)}
+.pills button.on{background:var(--ink);color:#fff}
+.pills button span{opacity:.6;font-weight:500;margin-left:4px}
+
+/* project card */
+.pcard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:12px;display:flex;flex-direction:column;gap:12px}
+.pimg{height:250px;border-radius:16px;position:relative;overflow:hidden;background:var(--accent-soft);display:flex;align-items:center;justify-content:center}
+.pimg .bg{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(18px) saturate(1.1);opacity:.7}
+.pimg img{position:relative;height:100%;width:auto;object-fit:contain}
+.pimg .ico{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--accent);font-weight:800}
+.pimg .ico b{font-size:44px;line-height:1}
+.pimg .ico small{font-size:13px;letter-spacing:.08em}
+.pcard .meta{display:flex;justify-content:space-between;gap:8px;font-size:13px;font-weight:700}
+.status{padding:3px 10px;border-radius:999px;background:var(--soft)}
+.status.Ongoing{background:#FFF4D6;color:#7A5800}
+.status.Completed{background:var(--accent-soft);color:var(--accent)}
+
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border-radius:20px;overflow:hidden}
+.tbl th,.tbl td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{font-size:13px;letter-spacing:.06em;color:var(--muted);background:var(--soft)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:20px}
+
+/* people */
+.person{display:flex;gap:14px;align-items:center;background:#fff;border-radius:20px;padding:16px}
+.avatar{flex:0 0 48px;height:48px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800}
+
+/* form */
+label{font-size:14px;font-weight:700}
+input,select,textarea{font:inherit;font-size:16px;padding:14px 16px;border:1px solid #C7D2C9;border-radius:12px;min-height:48px;width:100%;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.field{display:flex;flex-direction:column;gap:8px}
+
+footer{background:var(--ink);color:#B9C7BE;font-size:14px}
+footer a{color:#fff;text-decoration:none}footer a:hover{color:#B5DFA0}
+.view{display:none}.view.on{display:block}
+.demo-bar{background:var(--accent);color:#fff;font-size:13px;text-align:center;padding:8px 16px}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Preview of the proposed new DUCT Engineering website.</div>
+
+<header id="hdr">
+  <div class="hdr wrap">
+    <a class="logo" href="#home" aria-label="DUCT Engineering Ltd. home"><img src="img/logo.png" alt="DUCT Engineering Ltd. — Committed for real dream" width="300" height="71"></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="main" id="nav" aria-label="Main">
+      <a href="#home" data-r="home">Home</a>
+      <a href="#about" data-r="about">About</a>
+      <a href="#projects" data-r="projects">Projects</a>
+      <a href="#contact" data-r="contact">Contact</a>
+    </nav>
+    <a class="btn btn-dark" href="tel:+8801711137033">Call +88 01711 137033</a>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<div class="view" id="v-home">
+  <section style="padding-top:48px;padding-bottom:40px">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:40px">
+      <div class="row between">
+        <div style="flex:1 1 600px;display:flex;flex-direction:column;gap:16px">
+          <p class="eyebrow">BUILD YOUR DREAM</p>
+          <h1>Engineering the places Bangladesh lives, works and moves.</h1>
+        </div>
+        <div style="flex:0 1 360px;display:flex;flex-direction:column;gap:20px">
+          <p class="muted" style="margin:0;font-size:18px">Consulting, construction, supervision and development, delivered by one multidisciplinary team since 2009.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <a class="btn btn-accent" href="#projects">Explore projects →</a>
+            <a class="btn" style="border:1px solid var(--line)" href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero">
+        <div class="hero-strip">
+          <figure><img src="img/diba-garden.jpg" alt="Diba Garden, 6-storey residential building, Mohammadpur"><figcaption>Diba Garden</figcaption></figure>
+          <figure><img src="img/eva-cottage.jpg" alt="Eva Cottage, 7-storey residential building, Mirpur-1"><figcaption>Eva Cottage</figcaption></figure>
+          <figure><img src="img/azad-villa.jpg" alt="Azad Villa, 6-storey residential building, Mohammadpur"><figcaption>Azad Villa</figcaption></figure>
+          <figure><img src="img/milon-kunjo.jpg" alt="Milon Kunjo, 7-storey residential building, Adabar"><figcaption>Milon Kunjo</figcaption></figure>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>2009</b><span>Established in Dhaka</span></div>
+          <div class="stat"><b>~50</b><span>Engineers &amp; specialists</span></div>
+          <div class="stat"><b id="statDone">26</b><span>Buildings completed</span></div>
+          <div class="stat"><b id="statOn">10</b><span>Projects ongoing</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:40px">
+      <div class="row between">
+        <h2>Our services</h2>
+        <p class="muted" style="margin:0;font-size:17px;max-width:440px">Integrated support across the full project cycle, from feasibility assessment and design to supervision and post-implementation evaluation.</p>
+      </div>
+      <div class="grid g4">
+        <div class="card-soft" style="display:flex;flex-direction:column;gap:56px">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2F6B1F" stroke-width="1.8" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg>
+          <div><h3 style="font-size:22px;margin-bottom:8px">Consulting</h3><p class="muted" style="margin:0">Feasibility studies, planning, structural and detailed design.</p></div>
+        </div>
+        <div class="card-soft" style="display:flex;flex-direction:column;gap:56px">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2F6B1F" stroke-width="1.8" stroke-linecap="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+          <div><h3 style="font-size:22px;margin-bottom:8px">Construction</h3><p class="muted" style="margin:0">Residential, commercial and public buildings, built to schedule.</p></div>
+        </div>
+        <div class="card-soft" style="display:flex;flex-direction:column;gap:56px">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2F6B1F" stroke-width="1.8" stroke-linecap="round"><path d="M9 11l2 2 4-4"/><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>
+          <div><h3 style="font-size:22px;margin-bottom:8px">Supervision</h3><p class="muted" style="margin:0">Construction supervision, project management and quality control.</p></div>
+        </div>
+        <div class="card-soft" style="background:var(--accent);color:#fff;display:flex;flex-direction:column;gap:56px">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M4 18l6-6 4 4 6-8M14 8h6v6"/></svg>
+          <div><h3 style="font-size:22px;margin-bottom:8px">Development</h3><p style="margin:0;color:#E2F0DA">Property development from concept to handover.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--soft)">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:32px">
+      <div class="row between" style="align-items:center">
+        <h2>Recent projects</h2>
+        <a class="btn btn-dark" href="#projects">View all projects</a>
+      </div>
+      <div class="grid g3" id="homeProjects"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap row" style="gap:56px;align-items:flex-start">
+      <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:20px">
+        <h2>A consultancy built for the whole project cycle</h2>
+        <p class="muted" style="margin:0;font-size:17px">Engineers, architects, planners, environmental and social specialists, economists and surveyors, working from our own six-storey Dhaka headquarters with modern engineering software, survey equipment, laboratories and GIS/CAD systems.</p>
+        <a href="#about" style="font-weight:700;color:var(--accent)">Company profile →</a>
+      </div>
+      <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:14px">
+        <p class="muted" style="margin:0;font-size:14px;font-weight:700;letter-spacing:.1em">WE WORK WITH</p>
+        <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px" id="clients"></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div style="background:var(--ink);color:#fff;border-radius:32px;padding:clamp(32px,5vw,64px);display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between">
+        <div style="flex:1 1 400px"><h2>Have a project in mind?</h2><p style="margin:12px 0 0;color:#B9C7BE;font-size:17px">Mohammadpur, Dhaka · +88 01711 137033 · duct.eltd@gmail.com</p></div>
+        <a class="btn btn-white" href="#contact">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="view" id="v-about">
+  <section style="padding-top:56px;padding-bottom:56px">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:20px">
+      <p class="eyebrow">ABOUT US</p>
+      <h1 style="max-width:900px;font-size:clamp(36px,5vw,62px)">A multidisciplinary consultancy, headquartered in Dhaka since 2009.</h1>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap row" style="gap:48px;align-items:flex-start">
+      <div style="flex:1 1 440px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <img src="img/eva-cottage.jpg" alt="Eva Cottage" style="width:100%;height:340px;object-fit:cover;border-radius:22px">
+        <img src="img/milon-kunjo.jpg" alt="Milon Kunjo" style="width:100%;height:340px;object-fit:cover;border-radius:22px;margin-top:40px">
+      </div>
+      <div class="muted" style="flex:1 1 440px;display:flex;flex-direction:column;gap:16px;font-size:17px">
+        <h2 style="color:var(--ink);font-size:32px">Company profile</h2>
+        <p style="margin:0">DUCT Engineering began as a proprietary firm in 2009 and was incorporated as a Private Limited Company in 2013. We provide integrated consultancy across the whole project cycle, from feasibility assessment and detailed design through construction supervision and project management to post-implementation evaluation.</p>
+        <p style="margin:0">Our core team of about 50 professionals includes engineers, architects, planners, environmental and social specialists, economists and surveyors. We work from our own six-storey headquarters in Dhaka.</p>
+        <p style="margin:0">Our expertise covers transportation, bridges, water resources, flood control and drainage, buildings, urban infrastructure, geotechnical engineering, environmental management, electrical and mechanical engineering, and social infrastructure.</p>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--soft)">
+    <div class="wrap grid" style="grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))">
+      <div class="card-soft" style="background:var(--accent);color:#fff;padding:40px"><p style="margin:0 0 12px;font-size:14px;font-weight:700;letter-spacing:.1em;color:#CDE6C0">OUR VISION</p><p style="margin:0;font-size:21px;font-weight:700;line-height:1.5">To be a leading multidisciplinary engineering consultancy recognized nationally and internationally for delivering innovative, sustainable and high-quality infrastructure solutions that contribute to economic growth, environmental stewardship and social well-being.</p></div>
+      <div class="card-soft" style="background:#fff;padding:40px"><p class="eyebrow" style="margin-bottom:12px">OUR MISSION</p><p style="margin:0;font-size:21px;font-weight:700;line-height:1.5">To provide integrated, innovative and sustainable engineering consultancy services that deliver practical and value-driven solutions for infrastructure development, supporting governments, development partners and private clients through technical excellence, professional integrity and client-focused service.</p></div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap" style="display:flex;flex-direction:column;gap:32px">
+      <h2>Core values</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))" id="values"></div>
+    </div>
+  </section>
+  <section style="background:var(--soft)">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:32px">
+      <div class="row between"><h2>Key personnel</h2><p class="muted" style="margin:0">Structural Design &amp; Construction · CSE &amp; EEE Engineers</p></div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:12px" id="team"></div>
+    </div>
+  </section>
+</div>
+
+<!-- PROJECTS -->
+<div class="view" id="v-projects">
+  <section style="padding-top:56px;padding-bottom:40px">
+    <div class="wrap row between">
+      <div style="flex:1 1 560px;display:flex;flex-direction:column;gap:16px">
+        <p class="eyebrow">PROJECTS</p>
+        <h1 style="font-size:clamp(36px,5vw,62px)">Homes and buildings across Dhaka and beyond.</h1>
+      </div>
+      <div class="pills" role="group" aria-label="Filter projects" id="filters"></div>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:20px">
+      <div style="background:var(--soft);border-radius:28px;padding:12px;display:flex;flex-wrap:wrap;gap:12px">
+        <div style="flex:1 1 480px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <img src="img/diba-garden.jpg" alt="Diba Garden front elevation" style="width:100%;height:380px;object-fit:cover;border-radius:20px">
+          <img src="img/azad-villa.jpg" alt="Azad Villa front elevation" style="width:100%;height:380px;object-fit:cover;border-radius:20px">
+        </div>
+        <div style="flex:1 1 340px;padding:28px;display:flex;flex-direction:column;gap:16px;justify-content:center">
+          <span style="align-self:flex-start;background:var(--accent);color:#fff;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px">FEATURED</span>
+          <h2 style="font-size:34px">Diba Garden</h2>
+          <p class="muted" style="margin:0">A six-storey, two-unit residential building in Nabodoy Housing Society, designed and built by DUCT Engineering.</p>
+          <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;font-size:15px">
+            <div><div class="muted">Client</div><b>Mrs Anowara Khatun</b></div><div><div class="muted">Location</div><b>Mohammadpur, Dhaka</b></div>
+            <div><div class="muted">Floor area</div><b>1,500 sft · 2 units</b></div><div><div class="muted">Completed</div><b>2012</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid g3" id="allProjects"></div>
+      <div id="emptyMsg" class="card-soft" style="display:none;text-align:center;padding:56px 24px">
+        <h3 style="font-size:22px;margin-bottom:8px">Upcoming projects coming soon</h3>
+        <p class="muted" style="margin:0 0 20px">New developments will be announced here. Interested in an upcoming project?</p>
+        <a class="btn btn-accent" href="#contact">Register interest</a>
+      </div>
+      <p class="muted" style="margin:8px 0 0;font-size:14px" id="countMsg"></p>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div class="view" id="v-contact">
+  <section style="padding-top:56px">
+    <div class="wrap row" style="gap:48px;align-items:flex-start">
+      <div style="flex:1 1 400px;display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <p class="eyebrow">CONTACT</p>
+          <h1 style="font-size:clamp(36px,5vw,58px)">Let us talk about your project.</h1>
+          <p class="muted" style="margin:0;font-size:17px">Tell us what you are planning and our team will get back to you.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card-soft" style="padding:20px 22px;border-radius:18px"><div class="muted" style="font-size:14px">Head office</div><b>House No-7, Road No-1, Block-C, Dhaka Uddan Residential Area, Mohammadpur, Dhaka-1207</b></div>
+          <a class="card-soft" style="padding:20px 22px;border-radius:18px;text-decoration:none;display:block" href="tel:+8801711137033"><div class="muted" style="font-size:14px">Phone</div><b>+88 01711 137033</b></a>
+          <a class="card-soft" style="padding:20px 22px;border-radius:18px;text-decoration:none;display:block" href="mailto:duct.eltd@gmail.com"><div class="muted" style="font-size:14px">Email</div><b>duct.eltd@gmail.com</b></a>
+        </div>
+      </div>
+      <form id="form" style="flex:1 1 500px;border:1px solid var(--line);border-radius:28px;padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:20px">
+        <h2 style="font-size:26px">Send an enquiry</h2>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+          <div class="field"><label for="f1">Full name</label><input id="f1" required autocomplete="name"></div>
+          <div class="field"><label for="f2">Organisation</label><input id="f2" autocomplete="organization"></div>
+          <div class="field"><label for="f3">Email</label><input id="f3" type="email" required autocomplete="email"></div>
+          <div class="field"><label for="f4">Phone</label><input id="f4" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="f5">Service needed</label><select id="f5"><option>Consulting</option><option>Construction</option><option>Supervision</option><option>Development</option><option>Other</option></select></div>
+        <div class="field"><label for="f6">Project details</label><textarea id="f6" rows="5"></textarea></div>
+        <button class="btn btn-accent" style="align-self:flex-start" type="submit">Send enquiry</button>
+        <p id="formMsg" role="status" style="display:none;margin:0;background:var(--soft);border-radius:12px;padding:14px 16px;font-weight:600">Your email app should now open with the enquiry filled in. Press send there to reach our team.</p>
+      </form>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap"><iframe title="Map of DUCT Engineering head office, Mohammadpur, Dhaka" src="https://maps.google.com/maps?q=Dhaka%20Uddan%20Residential%20Area%2C%20Mohammadpur%2C%20Dhaka&z=15&output=embed" style="width:100%;height:380px;border:0;border-radius:28px;background:var(--soft)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap" style="padding-top:48px;padding-bottom:32px;display:flex;flex-direction:column;gap:32px">
+    <div class="row" style="justify-content:space-between;gap:32px">
+      <div style="max-width:360px">
+        <p style="margin:0 0 8px;color:#fff;font-weight:800;font-size:18px">DUCT Engineering Ltd.</p>
+        <p style="margin:0">House No-7, Road No-1, Block-C, Dhaka Uddan Residential Area, Mohammadpur, Dhaka-1207</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="tel:+8801711137033">+88 01711 137033</a><a href="mailto:duct.eltd@gmail.com">duct.eltd@gmail.com</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:20px">© 2014–2026 DUCT Engineering Ltd. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// Project list taken from the current ductengrbd.com project pages.
+const projects=[
+  // Ongoing
+  {n:'Morita Tower-1',c:'Sydney International',l:'Kawlar, Dakshinkhan, Dhaka',s:'Ongoing'},
+  {n:'EXCEL Cottage',c:'EXCEL Real Estate',l:'Kawlar, Dakshinkhan, Dhaka',s:'Ongoing'},
+  {n:'Shantee Cottage',c:'EXCEL Real Estate',l:'Uttara Sector-5, Dhaka',s:'Ongoing'},
+  {n:'Ekra Dev. Ltd Project-4',c:'Ekra Development Ltd.',l:'Adabor Road 6, Dhaka',s:'Ongoing'},
+  {n:'Prodip Complex',c:'Prodip Babu',l:'Dohar, Dhaka',s:'Ongoing'},
+  {n:'Residential Building',c:'Engr. Nizamul Haque Bhuiyan',l:'Kazipara, Mirpur, Dhaka',s:'Ongoing'},
+  {n:'Residential Building',c:'Mrs. Rafia Akter Doli',l:'Mirpur-10, Dhaka',s:'Ongoing'},
+  {n:'Residential Building',c:'Mr. Ataur Rahman',l:'Dhaka Uddan, Mirpur',s:'Ongoing'},
+  {n:'Residential Building',c:'Mr. Jakir Hossain',l:'Narayanganj City Corp.',s:'Ongoing'},
+  {n:'Residential Building',c:'Mr. Mosiur Rahman',l:'Jhenaidah',s:'Ongoing'},
+  // Completed
+  {n:'Milon Kunjo',c:'Ekra Dev. Ltd (Project-2)',l:'Adabar, Mohammadpur, Dhaka',s:'Completed',y:2014,f:7,img:'milon-kunjo'},
+  {n:'Azad Villa',c:'Mr. Azadur Rahman (Khokon)',l:'Nabodoy Housing, Mohammadpur',s:'Completed',y:2014,f:6,img:'azad-villa'},
+  {n:'Eva Cottage',c:'EXCEL Real Estate',l:'Tolarbag, Mirpur-1, Dhaka',s:'Completed',y:2012,f:7,img:'eva-cottage'},
+  {n:'Diba Garden',c:'Mrs Anowara Khatun',l:'Nabodoy Housing, Mohammadpur',s:'Completed',y:2012,f:6,img:'diba-garden'},
+  {n:'Residential Building',c:'Mr. Hafiz Ibrahim',l:'Dakshinkhan Askona, Dhaka',s:'Completed',y:2014,f:15},
+  {n:'Ekra Dev. Ltd Project-1',c:'Ekra Development Ltd.',l:'Ramchandrapur, Mohammadpur',s:'Completed',y:2014,f:7},
+  {n:'Mollah Cottage',c:'Salim Mollah',l:'Kawlar, Dakshinkhan, Dhaka',s:'Completed',y:2014,f:5},
+  {n:'Jame Mosque',c:'PD-CDSP Faridpur',l:'Faridpur',s:'Completed',y:2014,f:2},
+  {n:'Jame Mosque',c:'Advocate Mr Mannan',l:'Dhaka Uddan',s:'Completed',y:2014,f:3},
+  {n:'Residential Building',c:'Mr. Shajahan Siraj',l:'Kawlar, Dakshinkhan, Dhaka',s:'Completed',y:2014,f:5},
+  {n:'Residential Building',c:'Engr. Anamul Haque',l:'Kawlar, Dakshinkhan, Dhaka',s:'Completed',y:2014,f:5},
+  {n:'Residential Building',c:'Md Ishak Ali',l:'Kawlar, Dakshinkhan, Dhaka',s:'Completed',y:2014,f:5},
+  {n:'Residential Building',c:'Md Rafique Ahamed',l:'Kawlar, Dakshinkhan, Dhaka',s:'Completed',y:2014,f:5},
+  {n:'Residential Building',c:'Md Asraf Siddique',l:'Kawlar, Dakshinkhan, Dhaka',s:'Completed',y:2014,f:5},
+  {n:'Residential Building',c:'Mr. Abu Yousuf',l:'Santhia, Pabna',s:'Completed',y:2014,f:2},
+  {n:'Nasir Villa',c:'Nasir Uddin & Co.',l:'Kawlar, Dakshinkhan, Dhaka',s:'Completed',y:2013,f:9},
+  {n:'Haque Cottage',c:'EXCEL Real Estate',l:'Paikpara, Mirpur-1, Dhaka',s:'Completed',y:2013,f:8},
+  {n:'Basar Home',c:'Md Abul Basar & Co.',l:'Tajmohol Road, Mohammadpur',s:'Completed',y:2013,f:6},
+  {n:'Khan Villa',c:'Kaium Khan',l:'Kawlar, Dakshinkhan, Dhaka',s:'Completed',y:2013,f:6},
+  {n:'Zinnat Cottage',c:'Md Zinnat Ali',l:'Dakshinkhan, Dhaka',s:'Completed',y:2013,f:6},
+  {n:'Natore Villa',c:'Dr. Ishak Ali',l:'Kandivita, Natore',s:'Completed',y:2013,f:4},
+  {n:'Residential Building',c:'Mr Parvez Khan',l:'Baonia, Tongi, Dhaka',s:'Completed',y:2013,f:3},
+  {n:'Paddma',c:'Takirul',l:'Kushtia',s:'Completed',y:2013,t:'Duplex'},
+  {n:'Mahbuba Garden',c:'EXCEL Real Estate',l:'Paikpara, Mirpur-1, Dhaka',s:'Completed',y:2012,f:8},
+  {n:'Pabna Cottage',c:'Engr. Ahmmed Ali',l:'Nabodoy Housing, Mohammadpur',s:'Completed',y:2011}
+];
+const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+function visual(p){
+  if(p.img) return `<div class="pimg"><div class="bg" style="background-image:url('img/${p.img}.jpg')"></div><img src="img/${p.img}.jpg" alt="${esc(p.n)} elevation" loading="lazy"></div>`;
+  const big=p.t||(p.f?p.f:'');const small=p.t?'BUILDING':(p.f?'STOREYS':(p.s==='Ongoing'?'UNDER WAY':'BUILDING'));
+  return `<div class="pimg"><div class="ico"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 21V5l8-2v18M12 21V9l8 2v10M2 21h20M7 8h2M7 12h2M7 16h2M15 14h2M15 17h2"/></svg>${big?`<b>${esc(big)}</b>`:''}<small>${small}</small></div></div>`;
+}
+function card(p){
+  return `<article class="pcard">${visual(p)}<div style="padding:4px 10px 12px;display:flex;flex-direction:column;gap:8px"><div class="meta"><span style="color:var(--accent)">${p.y?esc(p.y):'In progress'}</span><span class="status ${p.s}">${p.s}</span></div><h3 style="font-size:20px">${esc(p.n)}</h3><p class="muted" style="margin:0;font-size:15px">${esc(p.c)}<br>${esc(p.l)}</p></div></article>`;
+}
+const featuredHome=['Morita Tower-1','Milon Kunjo','Eva Cottage'];
+document.getElementById('homeProjects').innerHTML=featuredHome.map(n=>card(projects.find(p=>p.n===n))).join('');
+const counts={All:projects.length,Completed:projects.filter(p=>p.s==='Completed').length,Ongoing:projects.filter(p=>p.s==='Ongoing').length,Upcoming:0};
+document.getElementById('statDone').textContent=counts.Completed;
+document.getElementById('statOn').textContent=counts.Ongoing;
+document.getElementById('filters').innerHTML=Object.keys(counts).map((k,i)=>`<button class="${i?'':'on'}" data-f="${k}" aria-pressed="${!i}">${k}<span>${counts[k]}</span></button>`).join('');
+function renderProjects(f){
+  const list=projects.filter(p=>f==='All'||p.s===f);
+  document.getElementById('allProjects').innerHTML=list.map(card).join('');
+  document.getElementById('emptyMsg').style.display=list.length?'none':'block';
+  document.getElementById('countMsg').textContent=list.length?`Showing ${list.length} project${list.length>1?'s':''}.`:'';
+}
+renderProjects('All');
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#filters button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});
+  renderProjects(b.dataset.f);
+});
+document.getElementById('clients').innerHTML=['LGED','BWDB','RHD','BBA','EED','DPHE','MES','BADC','Bangladesh Army','World Bank','ADB','JICA','IFAD','SFD','OFID']
+  .map(n=>`<span style="border:1px solid var(--line);border-radius:14px;padding:16px 8px;text-align:center;font-weight:700;font-size:15px">${n}</span>`).join('');
+document.getElementById('values').innerHTML=[
+  ['Personal guidance','A dedicated contact who knows every part of the process and guides you from the first meeting until well after handover.'],
+  ['Experience and reliability','Expertise built since 2009, backed by the financial strength and reputation to deliver on schedule, as promised.'],
+  ['Value and attention to detail','Big-builder buying power that gives you more for less, with personal attention to every detail.']
+].map((v,i)=>`<div class="card-line"><p style="margin:0 0 10px;font-weight:800;color:var(--accent)">0${i+1}</p><h3 style="font-size:20px;margin-bottom:8px">${v[0]}</h3><p class="muted" style="margin:0">${v[1]}</p></div>`).join('');
+document.getElementById('team').innerHTML=[
+  ['Joynal Abedin','General Manager'],['Kaium Khan','Manager'],['Mrs Anwara Khatun','Accountant'],['Md Obidur Rahman','Surveyor'],
+  ['Md Humaun','Civil Foreman'],['Md Khalilur Rahman','Civil Foreman'],['Md Zahir Uddin','Plumbing Foreman'],['Md. Alamgir Hossain','Electrical Foreman'],['Md Abdur Rajjak (Mamun)','Legal Adviser']
+].map(([n,r])=>{const ini=n.replace(/^(Md\.?|Mrs)\s+/,'').split(/\s+/).slice(0,2).map(w=>w[0]).join('');return `<div class="person"><span class="avatar" aria-hidden="true">${ini}</span><div><h3 style="font-size:17px">${n}</h3><p class="muted" style="margin:2px 0 0;font-size:14px">${r}</p></div></div>`}).join('');
+
+const routes=['home','about','projects','contact'];
+const nav=document.getElementById('nav'),menuBtn=document.getElementById('menuBtn');
+function route(){
+  let h=location.hash.replace('#','');
+  let target=null;
+  if(h==='services'){h='home';target='services'}
+  if(!routes.includes(h))h='home';
+  routes.forEach(r=>document.getElementById('v-'+r).classList.toggle('on',r===h));
+  document.querySelectorAll('nav.main a').forEach(a=>{const on=a.dataset.r===h;a.classList.toggle('on',on);on?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')});
+  nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');
+  if(target){document.getElementById(target).scrollIntoView()}else{window.scrollTo(0,0)}
+}
+menuBtn.addEventListener('click',()=>{const o=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o)});
+window.addEventListener('hashchange',route);route();
+window.addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('scrolled',scrollY>10));
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const v=id=>document.getElementById(id).value.trim();
+  const body=`Name: ${v('f1')}\nOrganisation: ${v('f2')}\nEmail: ${v('f3')}\nPhone: ${v('f4')}\nService: ${v('f5')}\n\n${v('f6')}`;
+  location.href=`mailto:duct.eltd@gmail.com?subject=${encodeURIComponent('Website enquiry: '+v('f5'))}&body=${encodeURIComponent(body)}`;
+  document.getElementById('formMsg').style.display='block';
+});
+</script>
+</body>
+</html>
